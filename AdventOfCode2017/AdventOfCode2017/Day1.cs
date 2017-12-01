@@ -7,7 +7,7 @@ namespace AdventOfCode2017
         public int Part1(string input)
         {
             int sum = 0;
-            for (int i = 0; i < input.Length - 1;i++)
+            for (int i = 0; i < input.Length - 1; i++)
             {
                 int num = int.Parse(input[i].ToString());
                 int next = int.Parse(input[i + 1].ToString());
@@ -15,7 +15,7 @@ namespace AdventOfCode2017
                 if (num == next)
                 {
                     sum += num;
-                }                               
+                }
             }
 
             if (input.Last() == input.First())
@@ -32,13 +32,13 @@ namespace AdventOfCode2017
             for (int i = 0; i < input.Length / 2; i++)
             {
                 int num = int.Parse(input[i].ToString());
-                int next = int.Parse(input[i + input.Length/2].ToString());
+                int next = int.Parse(input[i + input.Length / 2].ToString());
 
                 if (num == next)
                 {
                     sum += num + num;
                 }
-            }          
+            }
             return sum;
         }
     }
