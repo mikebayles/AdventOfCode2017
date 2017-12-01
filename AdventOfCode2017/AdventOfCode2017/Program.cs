@@ -5,10 +5,11 @@ using System.Text;
 
 namespace AdventOfCode2017
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
+            new Day1();
         }
     }
 }

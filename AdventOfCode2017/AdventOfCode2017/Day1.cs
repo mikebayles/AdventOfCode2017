@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AdventOfCode2017
 {
-    class Day1
+    public class Day1
     {
     }
 }
