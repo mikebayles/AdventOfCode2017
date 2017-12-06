@@ -7,6 +7,7 @@ namespace AdventOfCode2017
     {
         public static void Main(string[] args)
         {
+            var input = File.ReadAllText("input.txt");
         }
     }
 }
