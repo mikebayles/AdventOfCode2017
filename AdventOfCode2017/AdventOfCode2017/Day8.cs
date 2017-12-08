@@ -7,8 +7,6 @@ namespace AdventOfCode2017
 {
     public class Day8
     {
-        private readonly Dictionary<string, int> registers = new Dictionary<string, int>();
-
         public int Part1(string[] input)
         {
             return CalculateMax(input, false);
@@ -21,7 +19,9 @@ namespace AdventOfCode2017
 
         private int CalculateMax(string[] input, bool maxEver)
         {
+            Dictionary<string, int> registers = new Dictionary<string, int>();
             int max = 0;
+
             foreach (var line in input)
             {
                 var parts = line.Split();
