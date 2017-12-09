@@ -9,7 +9,18 @@ namespace AdventOfCode2017
     {
         public int Part1(string input)
         {
-            int ret = 0;
+            return Calculate(input, false);
+        }
+
+        public int Part2(string input)
+        {
+            return Calculate(input, true);
+        }
+
+        private int Calculate(string input, bool part2)
+        {
+            int bracketCount = 0;
+            int garbageCount = 0;
             int currentDepth = 1;
             bool inGarbage = false;
 
@@ -21,42 +32,19 @@ namespace AdventOfCode2017
                 {
                     case '{':
                         if (!inGarbage)
-                            ret += currentDepth++;
+                            bracketCount += currentDepth++;
+                        else
+                            garbageCount++;
                         break;
                     case '}':
                         if (!inGarbage)
                             currentDepth--;
+                        else
+                            garbageCount++;
                         break;
                     case '<':
-                        inGarbage = true;
-                        break;
-                    case '>':
-                        inGarbage = false;
-                        break;
-                    case '!':
-                        i++;
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            return ret;
-        }
-
-        public int Part2(string input)
-        {
-            int ret = 0;
-            bool inGarbage = false;
-
-            for (int i = 0; i < input.Length; i++)
-            {
-                var c = input[i];
-
-                switch (c)
-                {
-                    case '<':
-                        if (inGarbage) ret++;
+                        if (inGarbage)
+                            garbageCount++;
                         inGarbage = true;
                         break;
                     case '>':
@@ -67,12 +55,12 @@ namespace AdventOfCode2017
                         break;
                     default:
                         if (inGarbage)
-                            ret++;
+                            garbageCount++;
                         break;
                 }
             }
 
-            return ret;
+            return part2 ? garbageCount : bracketCount;
         }
     }
 }
