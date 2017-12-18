@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace AdventOfCode2017
 {
@@ -6,7 +7,7 @@ namespace AdventOfCode2017
     {
         public static void Main(string[] args)
         {
-            var input = File.ReadAllText("input.txt");
+            var input = File.ReadAllLines("input.txt");
         }
     }
 }
