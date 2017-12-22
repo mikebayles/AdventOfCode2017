@@ -14,7 +14,7 @@ namespace AdventOfCode2017
             rules = input.Select(a => new Rule(a.Split()[0], a.Split()[2])).ToList();
         }
 
-        public int Part1(int iterations)
+        public int Run(int iterations)
         {
             char[,] drawing = stringToCharArr(".#./..#/###");
             while (iterations-- > 0)
@@ -57,9 +57,7 @@ namespace AdventOfCode2017
                 {
                     for (int c = 0; c < size; c++)
                     {
-                        int ri = (r / size) >= 1 ? (r / size) + 1 : (r / size);
-                        int ci = c + size * (i % size);
-                        ret[r + size * ((i + 1) / size), c + size * (i % (int)Math.Sqrt(arrays.Count))] = arrays[i][r, c];
+                        ret[r + size * (i / (int)Math.Sqrt(arrays.Count)), c + size * (i % (int)Math.Sqrt(arrays.Count))] = arrays[i][r, c];
                     }
                 }
             }
@@ -116,19 +114,9 @@ namespace AdventOfCode2017
                     if (ret.Count == 1)
                         ret[0][r % size, c % size] = array[r, c];
                     else
-                        ret[(n % array.GetLength(0) / size)][r % size, c % size] = array[r, c];
+                        ret[((array.GetLength(0) / size) * (r / size)) + (n % array.GetLength(0) / size)][r % size, c % size] = array[r, c];
                 }
             }
-
-            foreach (var a in ret)
-            {
-                if (charArrToString(a).Contains(default(char)))
-                {
-                    Console.WriteLine("adf");
-                }
-            }
-
-
 
             return ret;
         }
@@ -139,11 +127,8 @@ namespace AdventOfCode2017
         public List<string> Matches { get; }
         public string Apply { get; }
 
-        private string match;
-
         public Rule(string match, string apply)
         {
-            this.match = match;
             Matches = new List<string>();
             Apply = apply;
 
